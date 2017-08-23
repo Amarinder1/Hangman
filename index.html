@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Roboto+Mono|Rock+Salt" rel="stylesheet">
+    <title>Hangman</title>
+  </head>
+  <body>
+    <h1>Hangman</h1>
+    <div class="directions">
+      <h2>Directions</h2>
+      <p> The first person will put a word inside the textbox and click begin. This will allow the next person to guess the word
+      <br>You will have 5 tries to guess the word. If you lose, you can click 'Rematch' start another game
+      <br>If you win 10 games, you will have to play hard mode</p>
+    </div>
+
+    <div class="numberWrong">Missed Guesses:</div>
+    <div class="scoreboard">
+      <p id="win">Wins:</p>
+      <p id="loss">Losses:</p>
+    </div>
+
+    <div class="gameBoard">
+      <div class="revealWord"></div>
+    </div>
+
+    <div id="start">
+      <input type="password" class="input" placeholder="Enter word(s) here">
+      <button type="button" id="inputB">Begin</button>
+      <button type="button" id="rematch">Rematch</button>
+      <input type="text" class="guess" placeholder="Enter guess here">
+      <button type="button" id="guessB">Guess</button>
+      <button type="button" id="hardB">Hard Mode</button>
+    </div>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
