@@ -214,6 +214,7 @@ function startHard(){
   guessInput.removeClass('disabled');
   guessInput.prop('disabled', false);
   hardButton.addClass('disabled', true);
+  hardButton.prop('disabled', true);
   answer = hard[Math.floor(Math.random()*hard.length)].toLowerCase();
   arrayAnswer = answer.split('');
   createGameBoard();
