@@ -192,6 +192,7 @@ function rematch(){
   finalAnswer.text('');
   numWrong.text('Missed Guesses: ');
   finalAnswer.css('color', 'black');
+  hardButton.prop('disabled', false);
 }
 
 // when user gets 10 wins, will show 'hard mode' button
