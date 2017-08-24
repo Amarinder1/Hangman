@@ -157,7 +157,7 @@ function win(){
     guessInput.prop('disabled', true);
     victory++;
     numGames++;
-    finalAnswer.text("YOU WIN!!!");
+    finalAnswer.text('YOU WIN!!! THE WORD WAS ' answer.toUpperCase);
     finalAnswer.css('color', 'green');
     vicTag.text("Wins: " + victory);
   }
