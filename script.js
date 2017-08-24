@@ -116,7 +116,7 @@ function getGuess(){
       compareLetter();
     }
     else{
-      console.log("You can only guess 1 letter at a time");
+      alert("You can only guess 1 letter at a time");
     }
   }
 }
