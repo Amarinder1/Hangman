@@ -220,7 +220,6 @@ function startHard(){
   arrayAnswer = answer.split('');
   createGameBoard();
   console.log(arrayAnswer);
-  console.log()
 }
 
 //checks to see if user has won 3 or more games in a row
