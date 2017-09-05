@@ -1,39 +1,41 @@
-body{
+/* Great job here -- passes validator without any errors */
+/* I would add a space between the selector and the {  */
+body {
   display: flex;
   flex-direction: column;
   background-color: rgb(241, 230, 208);
 }
 
-h1{
+h1 {
   text-align: center;
   font-family: 'Baloo Bhaijaan', cursive;
   font-size: 250%;
 }
 
-h2, p{
+h2, p {
   margin-bottom: 0px;
   padding-bottom: 0px;
   margin-left: 2vw;
   font-family: 'Roboto Mono', monospace;
 }
 
-p{
+p {
   margin-bottom: 2vh;
   margin-top: 0px;
 }
 
-.gameBoard{
+.gameBoard {
   margin-top: 20vh;
   margin-bottom: 20vh;
   text-align: center;
   font-size: 400%;
 }
 
-.revealWord{
+.revealWord {
   margin: 0;
 }
 
-#start{
+#start {
   margin-top: 10vh;
   text-align: center;
   display: flex;
@@ -41,7 +43,7 @@ p{
   justify-content: center;
 }
 
-#inputB, #guessB, #rematch, #hardB{
+#inputB, #guessB, #rematch, #hardB {
   margin-right: 10vw;
   height: 40px;
   width: 90px;
@@ -52,21 +54,21 @@ p{
   font-size: 100%;
 }
 
-.guess, .input{
+.guess, .input {
   height: 36px;
   text-align: center;
   border: solid 1px;
 }
 
-#rematch{
+#rematch {
   background-color: orange;
 }
 
-#hardB{
+#hardB {
   background-color: purple;
 }
 
-.numberWrong{
+.numberWrong {
   float: left;
   margin-left: 1vw;
   margin-bottom: 0px;
@@ -77,21 +79,21 @@ p{
   font-size: 130%;
 }
 
-.scoreboard{
+.scoreboard {
   margin-top: 0px;
   color: blue;
 }
 
-.scoreboard p{
+.scoreboard p {
   margin-top: 0px;
   margin-bottom: 0px;
 }
 
-.disabled{
+.disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.revealWord{
+.revealWord {
   font-family: 'Rock Salt', cursive;
 }

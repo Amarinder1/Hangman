@@ -1,3 +1,7 @@
+/* AS: I would be consistent about using classes or ids here
+since there is only one of each (i.e. #word-input vs .input). I would also use more
+descriptive names for the ids like #word-button instead of
+#inputB. Overall, your variable names are consistent and descriptive. */
 var wordButton = $('#start').find('#inputB');
 var wordInput = $('#start').find('.input');
 var guessButton = $('#start').find('#guessB');
@@ -9,6 +13,8 @@ var rematchButton = $('#start').find('#rematch');
 var vicTag = $('.scoreboard').find('#win');
 var lossTag = $('.scoreboard').find('#loss');
 var hardButton = $('#start').find('#hardB');
+
+// AS: You could put these in another file in order to clean things up a bit
 var hard = ['Hard Pill to Swallow', 'Throw in the Towel', 'Jumping the Gun', 'Back to Square One',
 'Elvis has left the Building', 'The Jig is Up', 'A Chip on Your Shoulder', 'Love Birds','Fit as a fiddle',
 'Every Cloud Has a silver Lining', 'Hands Down', 'Heads Up', 'Down for the Count', 'Burst Your Bubble',
@@ -21,16 +27,28 @@ var hard = ['Hard Pill to Swallow', 'Throw in the Towel', 'Jumping the Gun', 'Ba
 
 var guess = '';
 var answer = '';
-var arrayAnswer = [];//what user inputs as word to be guessed
-var arrayGuess = [];//what second person guesses
-var arrayFinal = [];//used to create the game board
-var wrong = 0;//counter for wrong guesses
+var arrayAnswer = []; // what user inputs as word to be guessed
+var arrayGuess = []; // what second person guesses
+var arrayFinal = []; // used to create the game board
+var wrong = 0; // counter for wrong guesses
 var final;
-var loss = 0;//number of game losses
-var victory = 0;//number of games wins
-var numGames = 0;//counter for games won in a row
+var loss = 0; // number of game losses
+var victory = 0; // number of games wins
+var numGames = 0; // counter for games won in a row
+
+// AS: I really like how you broke up your code into smaller functions!
+// The model/view class approach would have worked well too
 
 function begin(){
+  /* AS: Since this function is being called at the beginning,
+  you could have these classes/props on the elements at the start
+  rather than using a function to do so */
+
+  /* AS: You could add a class to each of the elements that toggle the same way
+  to reduce repeated code 
+  
+  $('.begin-disabled').addClass('disabled').prop('disabled', true)
+  */
   rematchButton.addClass('disabled');
   guessInput.addClass('disabled');
   guessButton.addClass('disabled');
@@ -44,8 +62,9 @@ function begin(){
 }
 
 begin();
-//getting word(s) to guess from user, splits it into charcters and put them in an array
-//also checks if word is a space
+
+// getting word(s) to guess from user, splits it into charcters and put them in an array
+// also checks if word is a space
 function getWord(){
   wordButton.addClass('disabled');
   wordInput.addClass('disabled');
@@ -54,12 +73,13 @@ function getWord(){
   guessInput.removeClass('disabled');
   guessInput.prop('disabled', false);
   answer = wordInput.val().toLowerCase();
+
+  // AS: I would break this into a separate function (i.e. checkIfSpace(answer))
   if(answer.trim() == ''){
     alert('Enter a word');
     begin();
     return false;
-  }
-  else{
+  } else {
     arrayAnswer = answer.split('');
     console.log(arrayAnswer);
     createGameBoard();
@@ -68,7 +88,7 @@ function getWord(){
   }
 }
 
-//checking if the guess the user makes is a new letter or a letter that was already guessed
+// checking if the guess the user makes is a new letter or a letter that was already guessed
 function checkGuess(){
   for (var i = arrayGuess.length; i > 0; i --){
     if (arrayGuess[i] === arrayGuess[0]){
@@ -79,7 +99,7 @@ function checkGuess(){
   }
 }
 
-//going to take letter that user inputs and compare it to letters in the word
+// going to take letter that user inputs and compare it to letters in the word
 function compareLetter(){
   if(!checkGuess()){
     for (var i = 0; i < arrayAnswer.length; i++){
@@ -101,8 +121,8 @@ function compareLetter(){
   }
 }
 
-//getting a letter guess from user and putting it into an array
-//also checks if user puts in more than 1 charcter or a space
+// getting a letter guess from user and putting it into an array
+// also checks if user puts in more than 1 charcter or a space
 function getGuess(){
   guess = guessInput.val().toLowerCase();
   if(guess.trim() == ''){
@@ -116,13 +136,13 @@ function getGuess(){
       compareLetter();
     }
     else{
-      alert("You can only guess 1 letter at a time");
+      alert('You can only guess 1 letter at a time');
     }
   }
 }
 
-//creates the game board
-//will create game board that will take multiple words after!!!!!
+// creates the game board
+// will create game board that will take multiple words after!!!!!
 function createGameBoard(){
   for (var i = 0; i < arrayAnswer.length; i++){
     if (answer[i] == ' '){
@@ -135,7 +155,7 @@ function createGameBoard(){
   finalAnswer.append(arrayFinal);
 }
 
-//will show the correct letter
+// will show the correct letter
 function revealLetter(){
   for (var i = 0; i < arrayAnswer.length; i++){
     if (arrayAnswer[i] == arrayGuess[0]){
@@ -146,7 +166,7 @@ function revealLetter(){
   finalAnswer.text(final);
 }
 
-//happens if user has won the game
+// happens if user has won the game
 function win(){
   if(final == answer && wrong !=5){
     guessButton.addClass('disabled');
@@ -159,11 +179,11 @@ function win(){
     numGames++;
     finalAnswer.text('YOU WIN!!! THE WORD WAS ' answer.toUpperCase);
     finalAnswer.css('color', 'green');
-    vicTag.text("Wins: " + victory);
+    vicTag.text('Wins: ' + victory);
   }
 }
 
-//happens when user has lost the game
+// happens when user has lost the game
 function lose(){
     numWrong.text('Missed Guesses: ' + wrong);
     finalAnswer.text('YOU LOSE!!! THE WORD WAS ' + answer.toUpperCase());
@@ -178,7 +198,7 @@ function lose(){
     lossTag.text('Losses: ' + loss);
 }
 
-//resets the game
+// resets the game
 function rematch(){
   InARow();
   begin();
@@ -209,8 +229,13 @@ function hardMode(){
   }
 }
 
-//when user clicks 'hard mode button', will generate random word to guess
+// AS: I would remove your console.log() debugging statements
+// when you finish your code
+
+// when user clicks 'hard mode button', will generate random word to guess
 function startHard(){
+  // AS: I would abstract these removeClass/addClasses into their own function since 
+  // they are repeated a couple times
   guessButton.removeClass('disabled');
   guessInput.removeClass('disabled');
   guessInput.prop('disabled', false);
@@ -223,7 +248,7 @@ function startHard(){
   console.log()
 }
 
-//checks to see if user has won 3 or more games in a row
+// checks to see if user has won 3 or more games in a row
 function InARow(){
   if(numGames >= 3){
     alert('WOOHOO!! YOU HAVE WON ' + numGames + ' GAMES IN A ROW!!');
@@ -233,14 +258,16 @@ function InARow(){
   }
 }
 
-//lets user press enter to submit word to be guessed
+// AS: Good thinking here with the enter events!
+
+// lets user press enter to submit word to be guessed
 wordInput.keyup(function(event){
     if(event.keyCode == 13){
         wordButton.click();
     }
 });
 
-//allows user to press enter to submit letter for guess
+// allows user to press enter to submit letter for guess
 guessInput.keyup(function(event){
     if(event.keyCode == 13){
         guessButton.click();

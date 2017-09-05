@@ -1,3 +1,4 @@
+<!-- Great job, passes validator without any errors -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,6 +16,8 @@
       <br>If you win 10 games, you will have to play hard mode</p>
     </div>
 
+    <!-- Convention is to use kebab-case for selectors (number-wrong) 
+    instead of camelCase (numberWrong) -->
     <div class="numberWrong">Missed Guesses:</div>
     <div class="scoreboard">
       <p id="win">Wins:</p>
@@ -33,10 +36,12 @@
       <button type="button" id="guessB">Guess</button>
       <button type="button" id="hardB">Hard Mode</button>
     </div>
+    <!-- I would indent the attributes for consistency -->
     <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
